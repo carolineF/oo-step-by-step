@@ -10,8 +10,10 @@ function Student(name, age, klass) {
 Student.prototype = Object.create(Person.prototype);
 Student.prototype.constructor = Student;
 
+Student.prototype.super_introduce = Person.prototype.introduce;
+
 Student.prototype.introduce = function() {
-  return 'I am a Student. I am at ' + this.class + '.'
-}
+  return this.super_introduce() + ' I am a Student. I am at ' + this.class + '.'
+};
 
 module.exports = Student;
