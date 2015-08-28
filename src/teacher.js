@@ -2,9 +2,9 @@
 
 var Person = require('./person');
 
-function Teacher(id, name, age, klass) {
+function Teacher(id, name, age, classes) {
   Person.call(this, id, name, age);
-  this.class = klass;
+  this.classes = classes;
 }
 
 Teacher.prototype = Object.create(Person.prototype);
@@ -13,9 +13,9 @@ Teacher.prototype.constructor = Teacher;
 Teacher.prototype.super_introduce = Person.prototype.introduce;
 
 Teacher.prototype.introduce = function () {
-  var classString = this.class;
+  var classString = 'Class ' + this.classes.join(', ');
 
-  if (!this.class) {
+  if (this.classes.length <= 0) {
     classString = 'No Class';
   }
   return this.super_introduce() + ' I am a Teacher. I teach ' + classString + '.'
@@ -24,8 +24,8 @@ Teacher.prototype.introduce = function () {
 Teacher.prototype.introduceWith = function (student) {
 
   var teachString = "don't teach ";
-
-  if (student.class.number === parseInt(this.class.split(' ')[1])) {
+  
+  if (this.classes.indexOf(student.class.number) !== -1) {
     teachString = 'teach ';
   }
 

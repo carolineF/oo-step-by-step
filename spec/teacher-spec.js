@@ -10,7 +10,7 @@ describe('Student', function () {
   var teacher;
 
   beforeEach(function () {
-    teacher = new Teacher(2, 'Tom', 21, 'Class 2');
+    teacher = new Teacher(2, 'Tom', 21, [2,3]);
   });
 
   it('should is a instance of Person', function () {
@@ -21,16 +21,16 @@ describe('Student', function () {
     expect(teacher.id).toBe(2);
     expect(teacher.name).toBe('Tom');
     expect(teacher.age).toBe(21);
-    expect(teacher.class).toBe('Class 2');
+    expect(teacher.classes).toEqual([2, 3]);
   });
 
   describe('#introduce()', function () {
-    it('should return My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2.', function () {
-      expect(teacher.introduce()).toBe('My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2.');
+    it('should return My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2, 3.', function () {
+      expect(teacher.introduce()).toBe('My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2, 3.');
     });
 
     it('when class is null should return My name is Tom. I am 21 years old. I am a Teacher. I teach No Class.', function () {
-      teacher = new Teacher(1, 'Tom', 21);
+      teacher = new Teacher(1, 'Tom', 21, []);
       expect(teacher.introduce()).toBe('My name is Tom. I am 21 years old. I am a Teacher. I teach No Class.');
     });
   });
