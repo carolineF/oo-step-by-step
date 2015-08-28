@@ -1,5 +1,5 @@
 function Class(number) {
-    this.number = number;
+  this.number = number;
 }
 
 module.exports = Class;
