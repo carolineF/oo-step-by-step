@@ -1,6 +1,8 @@
 'use strict';
 
 var Teacher = require('../src/teacher');
+var Student = require('../src/student');
+var Class = require('../src/class');
 
 describe('Student', function() {
 
@@ -19,7 +21,25 @@ describe('Student', function() {
 
         it('class is null should return', function() {
             var teacher = new Teacher("Tom", 21);
-            expect(teacher.introduce()).toBe(undefined);
+            expect(teacher.introduce()).toBe('My name is Tom. I am 21 years old. I am a Teacher. I teach No Class.');
+        });
+    });
+
+    describe('#introduceWith()', function() {
+        it("should return My name is Tom. I am 21 years old. I am a Teacher. I don't teach Jerry.", function() {
+            var teacher = new Teacher("Tom", 21, 'Class 2');
+            var klass = new Class(1);
+            var student = new Student('Jerry', 21, klass);
+
+            expect(teacher.introduceWith(student)).toBe("My name is Tom. I am 21 years old. I am a Teacher. I don't teach Jerry.");
+        });
+
+        it("should return My name is Tom. I am 21 years old. I am a Teacher. I teach Jerry.", function() {
+            var teacher = new Teacher("Tom", 21, '2');
+            var klass = new Class(2);
+            var student = new Student('Jerry', 21, klass);
+
+            expect(teacher.introduceWith(student)).toBe("My name is Tom. I am 21 years old. I am a Teacher. I teach Jerry.");
         });
     });
 });
