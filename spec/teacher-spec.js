@@ -3,6 +3,7 @@
 var Teacher = require('../src/teacher');
 var Student = require('../src/student');
 var Class = require('../src/class');
+var Person = require('../src/person');
 
 describe('Student', function() {
 
@@ -10,6 +11,10 @@ describe('Student', function() {
 
     beforeEach(function() {
         teacher = new Teacher('Tom', 21, 'Class 2');
+    });
+
+    it('should is a instance of Person', function() {
+        expect(teacher instanceof Person).toBeTruthy();
     });
 
     it('should have name and age and class', function() {

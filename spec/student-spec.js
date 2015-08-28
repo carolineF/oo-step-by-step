@@ -2,6 +2,7 @@
 
 var Student = require('../src/student');
 var Class = require('../src/class');
+var Person = require('../src/person');
 
 describe('Student', function() {
 
@@ -10,6 +11,10 @@ describe('Student', function() {
     beforeEach(function() {
         var klass = new Class(2);
         student = new Student("Tom", 21, klass);
+    });
+
+    it('should is a instance of Person', function() {
+        expect(student instanceof Person).toBeTruthy();
     });
 
   it('should have name and age and class object', function() {
