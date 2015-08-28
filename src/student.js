@@ -1,3 +1,5 @@
+'use strict';
+
 var Person = require('./person');
 
 function Student(name, age, klass) {
