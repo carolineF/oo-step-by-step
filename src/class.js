@@ -14,4 +14,8 @@ Class.prototype.appendMember = function(student) {
   student.class = this;
 };
 
+Class.prototype.isIn = function(classes) {
+  return classes.indexOf(this.number) !== -1;
+};
+
 module.exports = Class;

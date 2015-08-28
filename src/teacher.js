@@ -24,12 +24,16 @@ Teacher.prototype.introduce = function () {
 Teacher.prototype.introduceWith = function (student) {
 
   var teachString = "don't teach ";
-  
+
   if (this.classes.indexOf(student.class.number) !== -1) {
     teachString = 'teach ';
   }
 
   return this.super_introduce() + " I am a Teacher. I " + teachString + student.name + '.'
+};
+
+Teacher.prototype.isTeaching = function(student) {
+  return student.class.isIn(this.classes);
 };
 
 module.exports = Teacher;

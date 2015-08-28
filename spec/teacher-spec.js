@@ -50,4 +50,18 @@ describe('Student', function () {
       expect(teacher.introduceWith(student)).toBe("My name is Tom. I am 21 years old. I am a Teacher. I teach Jerry.");
     });
   });
+
+  describe('#isTeaching()', function() {
+    it('should return true', function() {
+      var klass = new Class(2);
+      var student = new Student(2, 'Jerry', 21, klass);
+      expect(teacher.isTeaching(student)).toBe(true);
+    });
+
+    it('should return false', function() {
+      var klass = new Class(1);
+      var student = new Student(2, 'Jerry', 21, klass);
+      expect(teacher.isTeaching(student)).toBe(false);
+    });
+  });
 });
