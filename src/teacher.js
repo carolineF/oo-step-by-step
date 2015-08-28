@@ -13,18 +13,23 @@ Teacher.prototype.constructor = Teacher;
 Teacher.prototype.super_introduce = Person.prototype.introduce;
 
 Teacher.prototype.introduce = function() {
+    var classString = this.class;
+
     if(!this.class){
-        return this.super_introduce() + ' I am a Teacher. I teach No Class.';
+        classString = 'No Class';
     }
-    return this.super_introduce() + ' I am a Teacher. I teach ' + this.class + '.'
+    return this.super_introduce() + ' I am a Teacher. I teach ' + classString + '.'
 };
 
 Teacher.prototype.introduceWith = function(student) {
-    if(student.class.number === parseInt(this.class)){
-        return this.super_introduce() + ' I am a Teacher. I teach '+ student.name + '.'
-    }else{
-        return this.super_introduce() + " I am a Teacher. I don't teach "+ student.name + '.'
+
+    var teachString = "don't teach ";
+
+    if(student.class.number === parseInt(this.class.split(' ')[1])){
+        teachString = 'teach ';
     }
+
+    return this.super_introduce() + " I am a Teacher. I "+ teachString + student.name + '.'
 };
 
 module.exports = Teacher;
