@@ -7,10 +7,11 @@ describe('Student', function () {
 
   var worker;
   beforeEach(function () {
-    worker = new Worker('Tom', 21);
+    worker = new Worker(2, 'Tom', 21);
   });
 
-  it('should have name and age', function () {
+  it('should have id and name and age', function () {
+    expect(worker.id).toBe(2);
     expect(worker.name).toBe('Tom');
     expect(worker.age).toBe(21);
   });

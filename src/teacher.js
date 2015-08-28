@@ -2,8 +2,8 @@
 
 var Person = require('./person');
 
-function Teacher(name, age, klass) {
-  Person.call(this, name, age);
+function Teacher(id, name, age, klass) {
+  Person.call(this, id, name, age);
   this.class = klass;
 }
 
